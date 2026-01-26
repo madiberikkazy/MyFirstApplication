@@ -1,36 +1,38 @@
 package com.example.myapplication.ui
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.R
 import com.example.myapplication.viewmodel.MainViewModel
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: MainViewModel
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        val amountInput = findViewById<EditText>(R.id.amountInput)
+        val discountInput = findViewById<EditText>(R.id.discountInput)
+        val calcButton = findViewById<Button>(R.id.calcButton)
+        val resultText = findViewById<TextView>(R.id.resultText)
+        val errorText = findViewById<TextView>(R.id.errorText)
 
-        val editText = findViewById<EditText>(R.id.editTextInput)
-        val button = findViewById<Button>(R.id.btnShow)
-        val textView = findViewById<TextView>(R.id.textResult)
-
-        button.setOnClickListener {
-            viewModel.setText(editText.text.toString())
+        // Наблюдаем за состоянием
+        viewModel.state.observe(this) { state ->
+            resultText.text = state.resultText
+            errorText.text = state.errorText
         }
 
-        viewModel.text.observe(this) {
-            textView.text = it
+        // Кнопка
+        calcButton.setOnClickListener {
+            viewModel.calculate(
+                amountInput.text.toString(),
+                discountInput.text.toString()
+            )
         }
     }
 }
