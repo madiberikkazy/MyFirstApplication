@@ -6,22 +6,26 @@
     android:padding="16dp">
 
     <TextView
+        android:layout_marginTop="100dp"
         android:id="@+id/titleText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Title"
         android:textSize="20sp"
+        android:textColor="@color/black"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/descText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
         android:text="Description"
         android:layout_marginTop="8dp" />
 
     <TextView
         android:id="@+id/priceText"
+        android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Price"
