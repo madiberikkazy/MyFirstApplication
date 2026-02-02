@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="imgAvatar" type="id" />
+    <item name="txtName" type="id" />
+    <item name="txtEmail" type="id" />
+    <item name="btnEdit" type="id" />
+    <item name="btnLogout" type="id" />
+</resources>
