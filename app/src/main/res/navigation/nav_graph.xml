@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:startDestination="@id/catalogFragment">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/taskFragment">
 
     <fragment
-        android:id="@+id/catalogFragment"
-        android:name="com.example.myapplication.ui.catalog.CatalogFragment">
+        android:id="@+id/taskFragment"
+        android:name="com.example.myapplication.ui.task.TaskFragment"
+        android:label="Task List" >
         <action
-            android:id="@+id/action_catalog_to_details"
-            app:destination="@id/detailsFragment" />
+            android:id="@+id/action_taskFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/detailsFragment"
-        android:name="com.example.myapplication.details.DetailsFragment">
+        android:id="@+id/detailFragment"
+        android:name="com.example.myapplication.ui.details.DetailFragment"
+        android:label="Task Detail" >
         <argument
-            android:name="itemId"
+            android:name="taskId"
             app:argType="integer" />
     </fragment>
-
 </navigation>
