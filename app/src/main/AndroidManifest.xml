@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,15 +12,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
+
+        <!-- LoginActivity is the LAUNCHER (entry point) -->
         <activity
-            android:name=".ui.view.MainActivity"
+            android:name=".ui.view.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.view.RegisterActivity"
+            android:exported="false" />
+
+        <!-- MainActivity is no longer the launcher -->
+        <activity
+            android:name=".ui.view.MainActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
