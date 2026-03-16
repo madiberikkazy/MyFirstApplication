@@ -5,6 +5,8 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.androidx.navigation.safeargs)
     alias(libs.plugins.ksp)
+    // Firebase
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -66,6 +68,13 @@ dependencies {
 
     // Coroutines
     implementation(libs.kotlinx.coroutines.android)
+
+    // Firebase BOM — manages all Firebase library versions automatically
+    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
+    // Firebase Authentication
+    implementation("com.google.firebase:firebase-auth-ktx")
+    // Coroutines support for Firebase Tasks (.await())
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.1")
 
     // Tests
     testImplementation(libs.junit)
